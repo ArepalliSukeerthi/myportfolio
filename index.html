@@ -25,6 +25,7 @@
     body {
       font-family: 'Open Sans', sans-serif;
       display: flex;
+      flex-direction: row;
       background: var(--bg-color);
       color: var(--text-dark);
       animation: fadeIn 1s ease-in;
@@ -188,12 +189,15 @@
         position: relative;
         width: 100%;
         flex-direction: row;
-        justify-content: space-between;
-        padding: 20px;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
       }
       aside nav {
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
+        justify-content: center;
       }
       main {
         margin-left: 0;
@@ -266,7 +270,7 @@
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
       const form = this;
-      emailjs.sendForm('service_iy6dv91', 'template_wcd0mzc', form)
+      emailjs.sendForm('service_331vizr', 'template_wcd0mzc', form)
         .then(function() {
           alert('Message sent successfully!');
           form.reset();
