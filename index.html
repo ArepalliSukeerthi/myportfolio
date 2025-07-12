@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AREPALLI SUKEERTHI | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <style>
     :root {
@@ -29,7 +29,6 @@
       position: relative;
     }
 
-    /* Bubbles Background */
     .bubbles {
       position: fixed;
       top: 0;
@@ -44,23 +43,22 @@
     .bubble {
       position: absolute;
       bottom: -100px;
-      width: 20px;
-      height: 20px;
-      background: rgb(245, 7, 106);
+      background: rgb(182, 126, 165);
       border-radius: 50%;
       animation: floatUp linear infinite;
+      opacity: 0.6;
     }
 
     @keyframes floatUp {
       0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
+        transform: translateY(0) scale(0.8);
+        opacity: 0.6;
       }
       50% {
         opacity: 0.4;
       }
       100% {
-        transform: translateY(-120vh) scale(1.2);
+        transform: translateY(-120vh) scale(1.1);
         opacity: 0;
       }
     }
@@ -68,35 +66,44 @@
     header {
       background-color: var(--accent-color);
       color: white;
-      padding: 30px 20px;
-      text-align: center;
+      padding: 20px;
+      position: relative;
     }
 
-    header img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid white;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-
-    header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-    }
-
-    .navbar {
+    .header-inner {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     .menu-toggle {
       display: none;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: white;
       cursor: pointer;
+    }
+
+    .profile-info {
+      flex: 1;
+      text-align: center;
+    }
+
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+      margin-bottom: 5px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .navbar {
+      margin-top: 10px;
     }
 
     .menu {
@@ -114,33 +121,27 @@
       padding: 8px 16px;
       border-radius: 20px;
       font-weight: bold;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     }
 
     .menu a:hover {
       background-color: var(--accent-hover);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .menu-toggle {
         display: block;
-        margin-top: 10px;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index: 1000;
       }
 
       .menu {
         display: none;
         flex-direction: column;
-        width: 100%;
+        align-items: center;
         gap: 10px;
-        margin-top: 10px;
-      }
-
-      .menu a {
-        background-color: var(--accent-hover);
-        padding: 10px;
-        width: 90%;
-        margin: 0 auto;
-        text-align: center;
+        padding-top: 10px;
       }
 
       .menu.active {
@@ -258,22 +259,37 @@
 <body>
   <!-- Background Bubbles -->
   <div class="bubbles">
-    <div class="bubble" style="left: 10%; animation-duration: 15s;"></div>
-    <div class="bubble" style="left: 25%; animation-duration: 18s;"></div>
-    <div class="bubble" style="left: 40%; animation-duration: 12s;"></div>
-    <div class="bubble" style="left: 60%; animation-duration: 20s;"></div>
-    <div class="bubble" style="left: 75%; animation-duration: 17s;"></div>
-    <div class="bubble" style="left: 90%; animation-duration: 22s;"></div>
-  </div>
+    <!-- Small fast bubbles -->
+    <div class="bubble" style="left: 5%; width: 10px; height: 10px; animation-duration: 6s;"></div>
+    <div class="bubble" style="left: 15%; width: 8px; height: 8px; animation-duration: 10s;"></div>
+    <div class="bubble" style="left: 25%; width: 12px; height: 12px; animation-duration: 7s;"></div>
+    <div class="bubble" style="left: 35%; width: 14px; height: 14px; animation-duration: 10s;"></div>
+    <div class="bubble" style="left: 45%; width: 9px; height: 9px; animation-duration: 11s;"></div>
+    <div class="bubble" style="left: 55%; width: 11px; height: 11px; animation-duration: 8s;"></div>
+    <div class="bubble" style="left: 65%; width: 10px; height: 10px; animation-duration: 10s;"></div>
+    <div class="bubble" style="left: 75%; width: 12px; height: 12px; animation-duration: 7s;"></div>
+    <div class="bubble" style="left: 85%; width: 9px; height: 9px; animation-duration: 10s;"></div>
+    <div class="bubble" style="left: 95%; width: 13px; height: 13px; animation-duration: 9s;"></div>
 
+    <!-- Background filler -->
+    <div class="bubble" style="left: 10%; width: 30px; height: 30px; animation-duration: 15s;"></div>
+    <div class="bubble" style="left: 40%; width: 40px; height: 40px; animation-duration: 18s;"></div>
+    <div class="bubble" style="left: 70%; width: 50px; height: 50px; animation-duration: 20s;"></div>
+    <div class="bubble" style="left: 100%; width: 40px; height: 40px; animation-duration: 18s;"></div>
+
+  </div>
   <!-- Header -->
   <header>
-    <img src="keerthi1.jpeg" alt="Profile Picture" />
-    <h1>AREPALLI SUKEERTHI</h1>
-    <nav class="navbar">
+    <div class="header-inner">
       <div class="menu-toggle" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
       </div>
+      <div class="profile-info">
+        <img src="keerthi1.jpeg" alt="Profile Picture" />
+        <h1>AREPALLI SUKEERTHI</h1>
+      </div>
+    </div>
+    <nav class="navbar">
       <div class="menu" id="menu">
         <a href="#about">About</a>
         <a href="#certifications">Certifications</a>
@@ -311,7 +327,7 @@
     <section id="education">
       <h2>Education</h2>
       <h3>B.Tech in Computer Science</h3>
-      <p>Seshadri Rao Gudlavalleru Engineering College | 2023-2027</p>
+      <p>Seshadri Rao Gudlavalleru Engineering College | 2023–2027</p>
       <p>Studying core subjects like DSA, DBMS, OS...</p>
     </section>
 
@@ -327,7 +343,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 AREPALLI SUKEERTHI</p>
     <p>
@@ -337,7 +352,7 @@
     </p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- JS -->
   <script>
     // EmailJS setup
     (function() {
