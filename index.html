@@ -4,47 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AREPALLI SUKEERTHI | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <style>
     :root {
-      --accent-color: #d63384;
-      --accent-hover: #ad296a;
-      --bg-color: #fce4ec;
+      --accent-color: #c2185b;
+      --accent-hover: #ad1457;
+      --bg-color: #fde0ec;
       --text-dark: #111;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      transition: all 0.3s ease-in-out;
+      font-family: 'Roboto', sans-serif;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+
     body {
-      font-family: 'Roboto', serif;
-      background: linear-gradient(45deg, #fce4ec, #ffe3f3);
-      background-size: 400% 400%;
-      animation: gradientBackground 15s ease infinite;
+      background-color: var(--bg-color);
       color: var(--text-dark);
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      animation: fadeIn 1s ease-in;
-      position: relative;
       overflow-x: hidden;
+      position: relative;
     }
-    @keyframes gradientBackground {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+
+    /* Bubbles Background */
     .bubbles {
       position: fixed;
       top: 0;
@@ -53,140 +38,192 @@
       height: 100%;
       z-index: -1;
       overflow: hidden;
+      pointer-events: none;
     }
+
     .bubble {
       position: absolute;
-      background: rgba(199, 61, 125, 0.5);
+      bottom: -100px;
+      width: 20px;
+      height: 20px;
+      background: rgb(245, 7, 106);
       border-radius: 50%;
-      animation: floatUp 30s linear infinite;
+      animation: floatUp linear infinite;
     }
+
     @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-      50% { opacity: 0.6; }
-      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
     }
-    aside {
+
+    header {
       background-color: var(--accent-color);
       color: white;
-      width: 250px;
-      padding: 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: fixed;
-      animation: slideInLeft 1s ease;
+      padding: 30px 20px;
+      text-align: center;
     }
-    @keyframes slideInLeft {
-      from { transform: translateX(-100%); }
-      to { transform: translateX(0); }
-    }
-    aside img {
+
+    header img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      object-fit: cover;
       border: 3px solid white;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
       margin-bottom: 15px;
-      animation: pulse 2s infinite;
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    aside h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      text-align: center;
-    }
-    aside nav {
-      margin-top: 20px;
-      width: 100%;
+
+    .navbar {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
-    aside nav a {
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
       color: white;
+      cursor: pointer;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .menu a {
       text-decoration: none;
+      color: white;
+      background-color: #8e295e;
+      padding: 8px 16px;
+      border-radius: 20px;
       font-weight: bold;
-      padding: 10px;
-      border-radius: 5px;
-      text-align: center;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     }
-    aside nav a:hover {
+
+    .menu a:hover {
       background-color: var(--accent-hover);
-      transform: translateX(10px);
     }
+
+    @media (max-width: 600px) {
+      .menu-toggle {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .menu a {
+        background-color: var(--accent-hover);
+        padding: 10px;
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+    }
+
     main {
-      margin-left: 270px;
-      padding: 40px 20px;
-      flex: 1;
-      animation: fadeInUp 1s ease;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
     }
-    @keyframes fadeInUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+
     section {
       margin-bottom: 40px;
+      text-align: center;
       opacity: 0;
       transform: translateY(40px);
-      transition: all 1s ease;
+      transition: all 0.8s ease-out;
     }
+
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     section::after {
       content: "";
       display: block;
       height: 3px;
-      width: 100px;
+      width: 60px;
       background: var(--accent-color);
-      margin: 30px auto 0;
+      margin: 20px auto 0;
       border-radius: 5px;
       opacity: 0.5;
     }
+
     h2 {
-      font-family: 'Playfair Display', serif;
       color: var(--accent-color);
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       margin-bottom: 10px;
     }
-    h3, p, li, a, button {
-      color: var(--text-dark);
+
+    p, li {
+      font-size: 1rem;
+      line-height: 1.6;
     }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
     .skills-list {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
+      margin-top: 10px;
     }
+
     .skills-list li {
       background: white;
       border: 2px solid var(--accent-color);
       color: var(--accent-color);
       padding: 8px 16px;
       border-radius: 20px;
-      transform: scale(0.9);
-      animation: popIn 0.6s ease forwards;
     }
-    .skills-list li:nth-child(odd) { animation-delay: 0.2s; }
-    .skills-list li:nth-child(even) { animation-delay: 0.4s; }
-    @keyframes popIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+
     form {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-width: 500px;
+      margin: auto;
     }
+
     input, textarea {
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+
     button {
       background: var(--accent-color);
       color: white;
@@ -195,87 +232,65 @@
       border-radius: 5px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
     }
+
     button:hover {
       background: var(--accent-hover);
-      transform: scale(1.05);
     }
+
     footer {
       text-align: center;
       padding: 20px;
     }
+
     footer a {
       color: var(--accent-color);
       margin: 0 10px;
       font-size: 1.3rem;
       transition: transform 0.3s ease;
     }
+
     footer a:hover {
       transform: scale(1.2);
-    }
-    @media (max-width: 768px) {
-      aside {
-        width: 100%;
-        height: auto;
-        position: relative;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: center;
-        padding: 15px;
-      }
-      aside img {
-        width: 70px;
-        height: 70px;
-      }
-      aside h1 {
-        font-size: 1.2rem;
-      }
-      aside nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 5px;
-      }
-      main {
-        margin-left: 0;
-        padding: 20px;
-        width: 100%;
-      }
-      section {
-        text-align: center;
-      }
     }
   </style>
 </head>
 <body>
+  <!-- Background Bubbles -->
   <div class="bubbles">
-    <div class="bubble" style="width: 40px; height: 40px; left: 10%; animation-duration: 12s;"></div>
-    <div class="bubble" style="width: 25px; height: 25px; left: 20%; animation-duration: 10s;"></div>
-    <div class="bubble" style="width: 50px; height: 50px; left: 35%; animation-duration: 15s;"></div>
-    <div class="bubble" style="width: 20px; height: 20px; left: 50%; animation-duration: 8s;"></div>
-    <div class="bubble" style="width: 30px; height: 30px; left: 70%; animation-duration: 18s;"></div>
-    <div class="bubble" style="width: 60px; height: 60px; left: 85%; animation-duration: 20s;"></div>
+    <div class="bubble" style="left: 10%; animation-duration: 15s;"></div>
+    <div class="bubble" style="left: 25%; animation-duration: 18s;"></div>
+    <div class="bubble" style="left: 40%; animation-duration: 12s;"></div>
+    <div class="bubble" style="left: 60%; animation-duration: 20s;"></div>
+    <div class="bubble" style="left: 75%; animation-duration: 17s;"></div>
+    <div class="bubble" style="left: 90%; animation-duration: 22s;"></div>
   </div>
 
-  <aside>
-    <img src="keerthi1.jpeg" alt="Profile Picture">
+  <!-- Header -->
+  <header>
+    <img src="keerthi1.jpeg" alt="Profile Picture" />
     <h1>AREPALLI SUKEERTHI</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+    <nav class="navbar">
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="menu" id="menu">
+        <a href="#about">About</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
-  </aside>
+  </header>
 
+  <!-- Main Content -->
   <main>
     <section id="about">
       <h2>About Me</h2>
       <p>I am AREPALLI SUKEERTHI, a Computer Science and Engineering student passionate about software development and learning new technologies.</p>
     </section>
+
     <section id="certifications">
       <h2>Certifications</h2>
       <ul>
@@ -285,18 +300,21 @@
         <li>Google Cloud Skills Boost Badge</li>
       </ul>
     </section>
+
     <section id="skills">
       <h2>My Skills</h2>
       <ul class="skills-list">
         <li>HTML</li><li>CSS</li><li>JavaScript</li><li>C</li><li>Java</li><li>Python</li>
       </ul>
     </section>
+
     <section id="education">
       <h2>Education</h2>
       <h3>B.Tech in Computer Science</h3>
       <p>Seshadri Rao Gudlavalleru Engineering College | 2023-2027</p>
       <p>Studying core subjects like DSA, DBMS, OS...</p>
     </section>
+
     <section id="contact">
       <h2>Contact Me</h2>
       <form id="contact-form">
@@ -304,19 +322,24 @@
         <input type="email" name="reply_to" placeholder="Your Email" required />
         <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
         <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        <p id="form-status"></p>
       </form>
     </section>
-    <footer>
-      <p>&copy; 2025 AREPALLI SUKEERTHI</p>
-      <p>
-        <a href="https://github.com/ArepalliSukeerthi" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/sukeerthi-arepalli-82709a2a7" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:sukeerthiarepalli@gmail.com"><i class="fas fa-envelope"></i></a>
-      </p>
-    </footer>
   </main>
 
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 AREPALLI SUKEERTHI</p>
+    <p>
+      <a href="https://github.com/ArepalliSukeerthi" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/sukeerthi-arepalli-82709a2a7" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:sukeerthiarepalli@gmail.com"><i class="fas fa-envelope"></i></a>
+    </p>
+  </footer>
+
+  <!-- Scripts -->
   <script>
+    // EmailJS setup
     (function() {
       emailjs.init("yx9FHU7_0WebKlvi5");
     })();
@@ -324,24 +347,33 @@
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
       const form = this;
+      const status = document.getElementById('form-status');
+
       emailjs.sendForm('service_331vizr', 'template_wcd0mzc', form)
-        .then(function() {
-          alert('Message sent successfully!');
+        .then(() => {
+          status.textContent = 'Message sent successfully!';
+          status.style.color = 'green';
           form.reset();
-        }, function(error) {
-          alert('Failed to send message. Please try again.');
+        }, () => {
+          status.textContent = 'Failed to send message. Please try again.';
+          status.style.color = 'red';
         });
     });
 
+    // Mobile menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+    }
+
+    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    }, {
-      threshold: 0.1
-    });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('section').forEach(section => {
       observer.observe(section);
